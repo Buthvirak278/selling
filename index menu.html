@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* General resets */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body styling */
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      background: #333;
+      color: white;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    header .logo h1 {
+      font-size: 1.8rem;
+      margin-left: 20px;
+    }
+
+    header nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    header nav ul li {
+      margin: 0 20px;
+    }
+
+    header nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    header nav ul li a:hover {
+      color: #f39c12;
+    }
+
+    /* Hero section */
+    .hero {
+      background: url('https://via.placeholder.com/1500x800') no-repeat center center/cover;
+      height: 100vh;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 70px; /* To prevent header overlap */
+    }
+
+    .hero-text h2 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-text p {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #f39c12;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    .btn:hover {
+      background-color: #e67e22;
+    }
+
+    /* About section */
+    .about {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: #fff;
+    }
+
+    .about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Boxes Section */
+    .boxes-section {
+      display: flex;
+      justify-content: flex-end; /* Align to the right */
+      padding: 40px 20px;
+      background-color: #f4f4f4;
+    }
+
+    .box {
+      background-color: #fff;
+      padding: 20px;
+      margin: 10px;
+      width: 200px; /* Adjust the size of the boxes */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .box a {
+      text-decoration: none;
+      color: inherit; /* Ensures the link inherits the text color */
+      display: block; /* Ensures the link takes up the full space of the box */
+    }
+
+    .box img {
+      width: 100%; /* Makes the image fit within the box */
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .box h3 {
+      font-size: 1.6rem;
+      margin-top: 15px;
+      margin-bottom: 10px;
+    }
+
+    .box p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* Contact section */
+    .contact {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: #fff;
+    }
+
+    .contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+
+    .contact form input,
+    .contact form textarea {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .contact form button {
+      padding: 15px 30px;
+      background-color: #f39c12;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .contact form button:hover {
+      background-color: #e67e22;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    #boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.box {
+  width: 22%; 
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .box {
+    width: 48%; 
+  }
+}
+
+@media (max-width: 480px) {
+  .box {
+    width: 100%; 
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>My Website</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="index menu.html">Services</a></li>
+        <li><a href="index contect.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  
+
+  <section id="about" class="about">
+    
+  </section>
+
+  <section id="boxes" class="boxes-section">
+    <div class="box">
+      <a href="index អង្ករ ធម្មជាតិ.html">
+        <img src="https://commongrains.com/wp-content/uploads/2023/01/Is-Rice-A-Grain-Or-Seed.jpg" alt="Box 1 Image">
+        <h3>អង្ករ ធម្មជាតិ</h3>
+        <p1>អង្ករ គ្មានជាតិគីមី មានគុណភាពខ្ពស់</p1>
+      </a>
+    </div>
+    <div class="box">
+      <a href="index ទឹកត្រី.html">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxql1SoVIjdL3zaczNb6AJO7Vr3DRKq_Ao8N6OMN_K5kgP6xYvEzu6W7SoL0cpvpagTGs&usqp=CAU" alt="Box 2 Image">
+        <h3>គ្រឿងទេស</h3>
+       <p1>គ្រឿងទេស គ្រប់ប្រភេទទៅតាមតម្រូវការ</p1>
+      </a>
+    </div>
+    <div class="box">
+      <a href="https://example.com/box3">
+        <img src="https://via.placeholder.com/200" alt="Box 3 Image">
+        <h3>Box Title 3</h3>
+        <p>Description for box 3.</p>
+      </a>
+    </div>
+    <div class="box">
+      <a href="https://example.com/box4">
+        <img src="https://via.placeholder.com/200" alt="Box 4 Image">
+        <h3>Box Title 4</h3>
+        <p>Description for the fourth box.</p>
+      </a>
+    </div>
+    <div class="box">
+      <a href="index សាប៊ូ លាងចាន.html">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzrQ734S8ljh4PsptcUJQPKIuQq5JSd7Iwgw&s" alt="Box 3 Image">
+        <h3>សាប៊ូ</h3>
+       <p1>សាប៊ូ មានគ្រប់ប្រភេទ “ សាប៊ូលាងចាន សាប៊ូបោកខោអាវ សាប៊ូជូតផ្ទះ…”</p1>
+      </a>
+    </div>
+    <div class="box">
+      <a href="index សាប៊ូ លាងចាន.html">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzrQ734S8ljh4PsptcUJQPKIuQq5JSd7Iwgw&s" alt="Box 4 Image">
+        <h3>Box Title 4</h3>
+        <p>Description for the fourth box.</p>
+      </a>
+    </div>
+
+    <div class="box">
+      <a href="https://example.com/box3">
+        <img src="https://via.placeholder.com/200" alt="Box 3 Image">
+        <h3>Box Title 3</h3>
+        <p>Description for box 3.</p>
+      </a>
+    </div>
+    <div class="box">
+      <a href="https://example.com/box4">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxql1SoVIjdL3zaczNb6AJO7Vr3DRKq_Ao8N6OMN_K5kgP6xYvEzu6W7SoL0cpvpagTGs&usqp=CAU" alt="Box 4 Image">
+        <h3>Box Title 4</h3>
+        <p>Description for the fourth box.</p>
+      </a>
+    </div>
+   
+</section>
+
+  </section>
+
+  
+
+
+
+  <footer>
+    <p>&copy; 2025 My Website. All rights reserved.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrendVerse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .back-btn {
+            text-transform: uppercase;
+            font-size: 20px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-transform: uppercase;
+            font-size: 24px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .cart-btn {
+            background-color: #120501;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .cart-btn:hover {
+            background-color: #d63c00;
+        }
+
+        .basket-count {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 800px;
+        }
+
+        .product {
+            background-color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .product a:hover {
+            color: #ff4500;
+        }
+
+        .product img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        h3 {
+            font-size: 16px;
+            margin: 10px 0 5px;
+        }
+
+        .price {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .time {
+            font-size: 16px;
+        }
+
+        .buy-btn {
+            background-color: #1317ff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        .buy-btn:hover {
+            background-color: #1317ff;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .pagination button {
+            margin: 0 5px;
+            padding: 10px 15px;
+            border: none;
+            background-color: #120501;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .pagination button:hover {
+            background-color: #d63c00;
+        }
+
+        .basket-wrapper {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background-color: white;
+            padding: 20px;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            display: none;
+            overflow-y: auto;
+        }
+
+        .basket-wrapper.open {
+            display: block;
+        }
+
+        .close-btn {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .quantity-controls button {
+            margin: 0 5px;
+        }
+
+        .item-price {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .total-price {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Styles for action buttons in basket */
+        .actions button {
+            background-color: #120501;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .actions button:hover {
+            background-color: #d63c00;
+        }
+
+        .actions button:active {
+            background-color: #ff4500;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+<header>
+  
+    <div class="time" id="current-time"></div>
+    <a href="#" class="logo"> ទឹកសុីអុីវ</a>
+    <button class="cart-btn" onclick="toggleBasket()">Cart <span class="basket-count" id="basket-count">0</span></button>
+</header>
+
+<div class="products">
+   
+
+   
+
+    <div class="product">
+    
+            <img src="https://camhappymart.com/storage/app/public/product/1604840411ifI8fHtL.jpg" alt="ទឹក​ស៊ីអ៊ីវថៃ​ភ្នំមាស  600ml">
+            <h3>ទឹក​ស៊ីអ៊ីវថៃ​ភ្នំមាស  600ml</h3>
+        </a>
+        <p class="price">$2.00</p>
+        <button class="buy-btn" onclick="addToCart('ទឹក​ស៊ីអ៊ីវថៃ​ភ្នំមាស  600ml', 2.00, 'https://camhappymart.com/storage/app/public/product/1604840411ifI8fHtL.jpg')">Add to Cart</button>
+    </div>
+    
+<div class="product">
+    
+    <img src="data:image/jpeg;base64,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" alt="ទឹកសុីអុីវគោ">
+    <h3>ទឹកសុីអុីវគោ</h3>
+</a>
+<p class="price">$0.70</p>
+<button class="buy-btn" onclick="addToCart('ទឹកសុីអុីវគោ', 0.70, 'data:image/jpeg;base64,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')">Add to Cart</button>
+</div>
+
+
+<div class="product">
+
+      <img src="https://aeoncambodia.sgp1.digitaloceanspaces.com/image/catalog/product/8936017367091-a.jpg" alt="ទឹកសុីអីវ CHIN SU">
+      <h3>ទឹកសុីអីវ CHIN SU</h3>
+  </a>
+  <p class="price">$1.00</p>
+  <button class="buy-btn" onclick="addToCart('ទឹកសុីអីវ CHIN SU', 1.00, 'https://aeoncambodia.sgp1.digitaloceanspaces.com/image/catalog/product/8936017367091-a.jpg')">Add to Cart</button>
+</div>
+<div class="product">
+ 
+      <img src="https://camhappymart.com/storage/app/public/product/2024-06-10-6666a35e90f23.webp" alt="ទឹកស៊ីអ៊ីវ Chin-Su 250mlគំរបស">
+      <h3>ទឹកស៊ីអ៊ីវ Chin-Su 250mlគំរបស </h3>
+  </a>
+  <p class="price">$1.00</p>
+  <button class="buy-btn" onclick="addToCart('ទឹកស៊ីអ៊ីវ Chin-Su 250mlគំរបស ', 1.00, 'https://camhappymart.com/storage/app/public/product/2024-06-10-6666a35e90f23.webp')">Add to Cart</button>
+</div>
+
+<div class="product">
+
+      <img src="https://aeoncambodia.sgp1.digitaloceanspaces.com/image/catalog/product/8936017366407-a.jpg" alt="ទឹកស៊ីអ៊ីវ Chin-Su 250ml ហិល ">
+      <h3>ទឹកស៊ីអ៊ីវ Chin-Su 250ml ហិល </h3>
+  </a>
+  <p class="price">$1.00</p>
+  <button class="buy-btn" onclick="addToCart('ទឹកស៊ីអ៊ីវ Chin-Su 250ml ហិល', 1.00, 'https://aeoncambodia.sgp1.digitaloceanspaces.com/image/catalog/product/8936017366407-a.jpg')">Add to Cart</button>
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+<div class="pagination">
+    <button onclick="location.href='index ទឹកត្រី.html'">1</button>
+    <button onclick="location.href='index ទឹកជ្រលក់.html'">2</button>
+    <button onclick="location.href='index ទឹកសុីអុីវ.html'">3</button>
+    <button onclick="location.href='index ប្រេងខ្យង.html'">4</button>
+</div>
+
+<!-- Basket -->
+<div class="basket-wrapper" id="basketWrapper">
+    <button class="close-btn" onclick="toggleBasket()">Close</button>
+    <h3>Shopping Cart</h3>
+    <div id="basketItems"></div>
+    <div id="totalPrice" class="total-price">Total: $0.00</div>
+    <div class="actions">
+        <button onclick="checkout()">Checkout</button>
+        
+    </div>
+</div>
+<a href="Index.html" class="back-button"><strong>BACK</strong></a>
+
+<style>
+  .back-button {
+    text-decoration: none; 
+    color: black; 
+  }
+</style>
+
+<script>
+    // Toggle Basket
+    function toggleBasket() {
+        const basket = document.getElementById('basketWrapper');
+        basket.classList.toggle('open');
+        displayBasket();
+    }
+
+    // Add product to cart
+    function addToCart(productName, price, img) {
+        const item = {
+            name: productName,
+            price: price,
+            img: img,
+            quantity: 1
+        };
+
+        let cart = JSON.parse(localStorage.getItem('basket')) || [];
+        const existingItem = cart.find(i => i.name === item.name);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push(item);
+        }
+
+        localStorage.setItem('basket', JSON.stringify(cart));
+        alert(`${productName} added to cart!`);
+        updateBasketCount();
+    }
+
+    // Update cart item count in the basket icon
+    function updateBasketCount() {
+        const cart = JSON.parse(localStorage.getItem('basket')) || [];
+        const basketCount = document.getElementById('basket-count');
+        basketCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+    }
+
+    // Display basket items and total price
+    function displayBasket() {
+        const basket = JSON.parse(localStorage.getItem('basket')) || [];
+        const basketItems = document.getElementById('basketItems');
+        const totalPrice = document.getElementById('totalPrice');
+        basketItems.innerHTML = '';
+        let total = 0;
+
+        if (basket.length === 0) {
+            basketItems.innerHTML = '<div class="empty-message">Your cart is empty!</div>';
+            totalPrice.innerHTML = 'Total: $0.00';
+            return;
+        }
+
+        basket.forEach((item, index) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.classList.add('item');
+
+            const itemContent = `
+                <img src="${item.img}" alt="${item.name}">
+                <div class="item-details">
+                    <span class="item-name">${item.name}</span>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(${index}, 'decrease')">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="updateQuantity(${index}, 'increase')">+</button>
+                    </div>
+                </div>
+                <div class="item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+            `;
+            itemDiv.innerHTML = itemContent;
+            basketItems.appendChild(itemDiv);
+
+            total += item.price * item.quantity;
+        });
+
+        totalPrice.innerHTML = `Total: $${total.toFixed(2)}`;
+    }
+
+    // Update item quantity in the basket
+    function updateQuantity(index, action) {
+        const cart = JSON.parse(localStorage.getItem('basket')) || [];
+        const item = cart[index];
+
+        if (action === 'increase') {
+            item.quantity += 1;
+        } else if (action === 'decrease') {
+            item.quantity -= 1;
+        }
+
+        if (item.quantity <= 0) {
+            cart.splice(index, 1);
+        }
+
+        localStorage.setItem('basket', JSON.stringify(cart));
+        displayBasket();
+        updateBasketCount();
+    }
+
+    
+    function checkout() {
+        window.location.href = 'checkout.html'; 
+    }
+    function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0'); 
+            const minutes = now.getMinutes().toString().padStart(2, '0'); 
+            const seconds = now.getSeconds().toString().padStart(2, '0'); 
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('current-time').textContent = timeString;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+
+   
+</script>
+
+</body>
+</html>
